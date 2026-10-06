@@ -1,13 +1,9 @@
-# Imagen del proyecto SAGA
+# Capturas del proyecto SAGA
 
-portafolio/public/images/projects/saga-dashboard.png
+Archivo original:
 
-```text
-saga-dashboard.png
-```
+`Captura de pantalla 2026-06-25 210719.png`
 
-Ruta final esperada:
+Archivo optimizado que utiliza el portafolio:
 
-```text
-public/images/projects/saga-dashboard.png
-```
+`saga-dashboard-600.png` en `public/images/projects/`.
