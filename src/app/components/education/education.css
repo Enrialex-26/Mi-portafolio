@@ -14,6 +14,9 @@
 }
 
 .eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
 	margin: 0 0 1rem;
 	color: var(--color-accent);
 	font-size: 0.76rem;
@@ -22,55 +25,173 @@
 	text-transform: uppercase;
 }
 
+.eyebrow span {
+	color: var(--color-muted);
+	font-size: 0.68rem;
+	font-variant-numeric: tabular-nums;
+}
+
 .education-heading h2 {
 	margin: 0;
 	color: var(--color-text);
 	font-family: 'Space Grotesk', sans-serif;
-	font-size: 3.15rem;
+	font-size: 3.5rem;
 	font-weight: 500;
 	line-height: 1.08;
 }
 
 .education-entry {
+	position: relative;
 	display: grid;
-	grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1.6fr);
+	grid-template-columns: minmax(185px, 0.38fr) minmax(0, 1.62fr);
 	align-items: center;
 	gap: 2.5rem;
-	padding: 1.75rem 0;
-	border-top: 1px solid var(--color-line);
-	border-bottom: 1px solid var(--color-line);
+	min-height: 220px;
+	padding: 2rem 2.5rem;
+	border: 1px solid var(--color-line);
+	border-left: 3px solid var(--color-accent);
+	border-radius: 4px;
+	background: var(--color-surface);
+	overflow: hidden;
+	transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.education-date {
+	position: relative;
+	z-index: 1;
+	padding-right: 1.5rem;
+	border-right: 1px solid var(--color-line);
+	transition: border-color 220ms ease;
+}
+
+.education-date p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
 }
 
 .education-year {
-	margin: 0;
+	display: block;
+	margin-top: 0.55rem;
 	color: var(--color-accent);
 	font-family: 'Space Grotesk', sans-serif;
 	font-size: 4.5rem;
 	font-weight: 600;
 	line-height: 1;
 	font-variant-numeric: tabular-nums;
+	transition: transform 220ms ease, text-shadow 220ms ease;
+}
+
+.education-details {
+	position: relative;
+	z-index: 1;
 }
 
 .education-level {
-	margin: 0 0 0.35rem;
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	margin: 0 0 0.45rem;
 	color: var(--color-muted);
-	font-size: 0.9rem;
+	font-size: 0.84rem;
+}
+
+.education-level span {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--color-accent);
 }
 
 .education-details h3 {
 	margin: 0;
 	color: var(--color-text);
 	font-family: 'Space Grotesk', sans-serif;
-	font-size: 1.8rem;
+	font-size: 2rem;
 	font-weight: 600;
-	line-height: 1.25;
+	line-height: 1.2;
+}
+
+.education-details h3 span {
+	color: var(--color-accent);
 }
 
 .education-school {
-	margin: 0.8rem 0 0;
+	display: flex;
+	align-items: baseline;
+	gap: 0.65rem;
+	margin: 0.9rem 0 0;
 	color: var(--color-muted);
-	font-size: 0.96rem;
+	font-size: 0.94rem;
 	line-height: 1.6;
+}
+
+.education-school span {
+	flex: 0 0 1.3rem;
+	height: 1px;
+	background: var(--color-accent);
+}
+
+.education-orbit {
+	position: absolute;
+	top: -4rem;
+	right: -2.5rem;
+	width: 13rem;
+	aspect-ratio: 1;
+	border: 1px solid rgba(112, 224, 196, 0.1);
+	border-radius: 50%;
+	transition: transform 350ms ease, border-color 350ms ease;
+}
+
+.education-orbit::before,
+.education-orbit::after {
+	position: absolute;
+	inset: 1rem;
+	border: 1px solid rgba(112, 224, 196, 0.08);
+	border-radius: 50%;
+	content: '';
+}
+
+.education-orbit::after {
+	inset: 2rem;
+}
+
+.education-entry:hover {
+	transform: translateY(-3px);
+	border-color: rgba(112, 224, 196, 0.5);
+	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+.education-entry:hover .education-year {
+	transform: translateX(4px);
+	text-shadow: 0 0 22px rgba(112, 224, 196, 0.26);
+}
+
+.education-entry:hover .education-orbit {
+	transform: scale(1.08) rotate(12deg);
+	border-color: rgba(112, 224, 196, 0.22);
+}
+
+@media (max-width: 820px) {
+	.education-entry {
+		grid-template-columns: minmax(145px, 0.42fr) minmax(0, 1.58fr);
+		gap: 1.5rem;
+		padding: 1.75rem;
+	}
+
+	.education-heading h2 {
+		font-size: 3rem;
+	}
+
+	.education-year {
+		font-size: 3.8rem;
+	}
+
+	.education-details h3 {
+		font-size: 1.7rem;
+	}
 }
 
 @media (max-width: 680px) {
@@ -84,15 +205,40 @@
 
 	.education-entry {
 		grid-template-columns: minmax(0, 1fr);
-		gap: 1rem;
-		padding: 1.4rem 0;
+		gap: 1.4rem;
+		min-height: 0;
+		padding: 1.5rem;
+	}
+
+	.education-date {
+		padding: 0 0 0.85rem;
+		border-right: 0;
+		border-bottom: 1px solid var(--color-line);
 	}
 
 	.education-year {
-		font-size: 3rem;
+		font-size: 3.2rem;
 	}
 
 	.education-details h3 {
-		font-size: 1.5rem;
+		font-size: 1.55rem;
+	}
+
+	.education-school {
+		font-size: 0.88rem;
+	}
+
+	.education-orbit {
+		top: -5rem;
+		right: -5rem;
+		width: 11rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.education-entry,
+	.education-year,
+	.education-orbit {
+		transition: none;
 	}
 }
