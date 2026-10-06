@@ -22,6 +22,9 @@
 }
 
 .brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.65rem;
 	flex-shrink: 0;
 	color: var(--color-text);
 	font-family: 'Space Grotesk', sans-serif;
@@ -29,6 +32,49 @@
 	font-weight: 700;
 	letter-spacing: 0;
 	text-decoration: none;
+}
+
+.brand-mark {
+	position: relative;
+	display: grid;
+	width: 2.2rem;
+	height: 2.2rem;
+	place-items: center;
+	border: 1px solid rgba(112, 224, 196, 0.55);
+	border-radius: 4px;
+	color: var(--color-accent);
+	background: var(--color-surface);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.82rem;
+	font-weight: 700;
+	transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.brand-mark::after {
+	position: absolute;
+	right: -1px;
+	bottom: 5px;
+	width: 4px;
+	height: 4px;
+	background: var(--color-accent);
+	content: '';
+}
+
+.brand:hover .brand-mark,
+.brand:focus-visible .brand-mark {
+	transform: rotate(-3deg);
+	color: var(--color-accent-ink);
+	background: var(--color-accent);
+}
+
+.brand:hover .brand-name,
+.brand:focus-visible .brand-name {
+	color: var(--color-accent);
+}
+
+.brand-name {
+	white-space: nowrap;
+	transition: color 180ms ease;
 }
 
 .nav-links {
@@ -40,6 +86,7 @@
 .nav-links a {
 	color: var(--color-muted);
 	font-size: 0.9rem;
+	white-space: nowrap;
 	text-decoration: none;
 	transition: color 180ms ease;
 }
@@ -84,7 +131,7 @@
 	background: var(--color-text);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 980px) {
 	.navbar {
 		width: calc(100% - 2rem);
 	}
