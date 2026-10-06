@@ -1,0 +1,124 @@
+ :host {
+	display: block;
+}
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: rgba(17, 23, 24, 0.92);
+	border-bottom: 1px solid var(--color-line);
+	backdrop-filter: blur(12px);
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: min(var(--content-width), calc(100% - 3rem));
+	min-height: var(--nav-height);
+	margin: 0 auto;
+	gap: 2rem;
+}
+
+.brand {
+	flex-shrink: 0;
+	color: var(--color-text);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 0.88rem;
+	font-weight: 700;
+	letter-spacing: 0;
+	text-decoration: none;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: clamp(1rem, 2vw, 1.8rem);
+}
+
+.nav-links a {
+	color: var(--color-muted);
+	font-size: 0.9rem;
+	text-decoration: none;
+	transition: color 180ms ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+	color: var(--color-accent);
+}
+
+.cv-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	min-height: 42px;
+	padding: 0.65rem 0.9rem;
+	border: 1px solid var(--color-accent);
+	border-radius: 4px;
+	color: var(--color-accent);
+	background: transparent;
+	font-size: 0.84rem;
+	font-weight: 700;
+	white-space: nowrap;
+	cursor: not-allowed;
+	opacity: 0.72;
+}
+
+.menu-toggle {
+	display: none;
+	width: 44px;
+	height: 44px;
+	border: 1px solid var(--color-line);
+	border-radius: 4px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.menu-toggle span {
+	display: block;
+	width: 1.25rem;
+	height: 2px;
+	margin: 4px auto;
+	background: var(--color-text);
+}
+
+@media (max-width: 860px) {
+	.navbar {
+		width: calc(100% - 2rem);
+	}
+
+	.menu-toggle {
+		display: inline-block;
+		flex-shrink: 0;
+	}
+
+	.nav-links {
+		position: absolute;
+		top: calc(var(--nav-height) - 1px);
+		right: 0;
+		left: 0;
+		display: none;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.25rem;
+		padding: 1rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-line);
+		box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+	}
+
+	.nav-links.is-open {
+		display: flex;
+	}
+
+	.nav-links a {
+		padding: 0.75rem;
+	}
+
+	.cv-button {
+		align-self: flex-start;
+		margin: 0.5rem 0.75rem 0.25rem;
+	}
+}

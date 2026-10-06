@@ -1,0 +1,76 @@
+<section id="proyectos" class="projects-section">
+	<div class="section-heading">
+		<p class="eyebrow">Proyecto destacado</p>
+		<h2>Una aplicación construida para resolver una necesidad concreta.</h2>
+	</div>
+
+	<article class="project-card">
+		<header class="project-heading">
+			<div>
+				<p class="project-label">01 / Aplicación web administrativa</p>
+				<h3>{{ project.title }}</h3>
+			</div>
+			<p class="project-description">{{ project.description }}</p>
+		</header>
+
+		<figure class="project-evidence">
+			@if (project.image) {
+				<img
+					[src]="project.image"
+					width="600"
+					height="274"
+					loading="lazy"
+					decoding="async"
+					alt="Vista de la aplicación web SAGA"
+				/>
+			} @else {
+				<span class="image-empty">Sin captura disponible</span>
+			}
+		</figure>
+
+		<div class="project-content">
+			<dl class="project-details">
+				<div>
+					<dt>Problema que resuelve</dt>
+					<dd>{{ project.problem }}</dd>
+				</div>
+				<div>
+					<dt>Participación</dt>
+					<dd>{{ project.role }}</dd>
+				</div>
+			</dl>
+
+			<div class="project-lower">
+				<section class="project-block">
+					<h4><span>01</span> Funcionalidades</h4>
+					<ul class="feature-list">
+						@for (feature of project.features; track feature; let index = $index) {
+							<li><span aria-hidden="true">{{ index + 1 }}</span>{{ feature }}</li>
+						}
+					</ul>
+				</section>
+
+				<section class="project-block project-stack">
+					<h4><span>02</span> Tecnologías</h4>
+					<ul class="technology-list">
+						@for (technology of project.technologies; track technology) {
+							<li>{{ technology }}</li>
+						}
+					</ul>
+				</section>
+			</div>
+
+			<footer class="project-actions">
+				@if (project.githubUrl) {
+					<a class="project-link" [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+				}
+				@if (project.demoUrl) {
+					<a class="project-link" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer">Ver demo</a>
+				}
+				@if (!project.githubUrl && !project.demoUrl) {
+					<p class="project-links">Repositorio y demo pendientes de compartir.</p>
+				}
+			</footer>
+		</div>
+	</article>
+</section>

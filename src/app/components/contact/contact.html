@@ -1,0 +1,35 @@
+<section id="contacto" class="contact-section">
+	<div class="section-heading">
+		<p class="eyebrow">Contacto</p>
+		<h2>Hablemos sobre una idea o un proyecto.</h2>
+		<p class="contact-intro">
+			Puedes escribirme directamente por correo o encontrarme en GitHub y LinkedIn.
+		</p>
+
+		<div class="contact-links">
+			<a href="mailto:enrialex.26@gmail.com">enrialex.26@gmail.com</a>
+			<a href="https://github.com/Enrialex-26" target="_blank" rel="noopener">GitHub</a>
+			<a href="https://www.linkedin.com/in/enrique-lozano-4240122b2" target="_blank" rel="noopener">LinkedIn</a>
+		</div>
+	</div>
+
+	<form class="contact-form" (submit)="onSubmit($event)">
+		<p class="form-notice" role="note">El formulario aún no está conectado a un servicio de envío.</p>
+		<label for="name">Nombre</label>
+		<input id="name" name="name" type="text" autocomplete="name" required />
+
+		<label for="email">Correo</label>
+		<input id="email" name="email" type="email" autocomplete="email" required />
+
+		<label for="message">Mensaje</label>
+		<textarea id="message" name="message" rows="5" required></textarea>
+
+		<button type="submit">Enviar mensaje</button>
+
+		@if (formSubmitted()) {
+			<p class="form-notice" role="status">
+				El mensaje no se envió. Puedes escribirme directamente por correo.
+			</p>
+		}
+	</form>
+</section>
