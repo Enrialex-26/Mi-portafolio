@@ -1,0 +1,98 @@
+:host {
+	display: block;
+}
+
+.education-section {
+	width: min(var(--content-width), calc(100% - 3rem));
+	margin: 0 auto;
+	padding: 6.5rem 0;
+	border-top: 1px solid var(--color-line);
+}
+
+.education-heading {
+	margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+	margin: 0 0 1rem;
+	color: var(--color-accent);
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.education-heading h2 {
+	margin: 0;
+	color: var(--color-text);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 3.15rem;
+	font-weight: 500;
+	line-height: 1.08;
+}
+
+.education-entry {
+	display: grid;
+	grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1.6fr);
+	align-items: center;
+	gap: 2.5rem;
+	padding: 1.75rem 0;
+	border-top: 1px solid var(--color-line);
+	border-bottom: 1px solid var(--color-line);
+}
+
+.education-year {
+	margin: 0;
+	color: var(--color-accent);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 4.5rem;
+	font-weight: 600;
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+}
+
+.education-level {
+	margin: 0 0 0.35rem;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+}
+
+.education-details h3 {
+	margin: 0;
+	color: var(--color-text);
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.education-school {
+	margin: 0.8rem 0 0;
+	color: var(--color-muted);
+	font-size: 0.96rem;
+	line-height: 1.6;
+}
+
+@media (max-width: 680px) {
+	.education-section {
+		padding: 4.5rem 0;
+	}
+
+	.education-heading h2 {
+		font-size: 2.35rem;
+	}
+
+	.education-entry {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1rem;
+		padding: 1.4rem 0;
+	}
+
+	.education-year {
+		font-size: 3rem;
+	}
+
+	.education-details h3 {
+		font-size: 1.5rem;
+	}
+}
