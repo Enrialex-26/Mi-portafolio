@@ -17,4 +17,22 @@ export class FirestoreService {
       return { ...data, id: document.id };
     });
   }
+
+  async addContactMessage(message: {
+    name: string;
+    email: string;
+    message: string;
+  }): Promise<void> {
+    const [{ addDoc, collection, serverTimestamp }, { getFirestoreInstance }] =
+      await Promise.all([
+        import('firebase/firestore'),
+        import('../firebase.config'),
+      ]);
+    const firestore = await getFirestoreInstance();
+
+    await addDoc(collection(firestore, 'contactMessages'), {
+      ...message,
+      createdAt: serverTimestamp(),
+    });
+  }
 }

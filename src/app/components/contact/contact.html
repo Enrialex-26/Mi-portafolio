@@ -14,7 +14,6 @@
 	</div>
 
 	<form class="contact-form" (submit)="onSubmit($event)">
-		<p class="form-notice" role="note">El formulario aún no está conectado a un servicio de envío.</p>
 		<label for="name">Nombre</label>
 		<input id="name" name="name" type="text" autocomplete="name" required />
 
@@ -24,11 +23,18 @@
 		<label for="message">Mensaje</label>
 		<textarea id="message" name="message" rows="5" required></textarea>
 
-		<button type="submit">Enviar mensaje</button>
+		<button type="submit" [disabled]="submitState() === 'sending'">
+			{{ submitState() === 'sending' ? 'Enviando…' : 'Enviar mensaje' }}
+		</button>
 
-		@if (formSubmitted()) {
+		@if (submitState() === 'success') {
 			<p class="form-notice" role="status">
-				El mensaje no se envió. Puedes escribirme directamente por correo.
+				El mensaje se envió correctamente. Gracias por escribirme.
+			</p>
+		}
+		@if (submitState() === 'error') {
+			<p class="form-notice" role="alert">
+				No se pudo enviar el mensaje. Tus datos siguen en el formulario; puedes intentarlo de nuevo o escribirme directamente por correo.
 			</p>
 		}
 	</form>
