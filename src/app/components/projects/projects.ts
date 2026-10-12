@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
+import { FirestoreService } from '../../services/firestore.service';
 
 @Component({
   imports: [],
@@ -7,8 +8,10 @@ import { Project } from '../../models/project';
   styleUrl: './projects.css',
   templateUrl: './projects.html',
 })
-export class Projects {
-  protected readonly project: Project = {
+export class Projects implements OnInit {
+  private readonly firestoreService = inject(FirestoreService);
+
+  protected project: Project = {
     title: 'SAGA | Panel administrativo',
     image: '/images/projects/saga-dashboard-600.png',
     description:
@@ -32,4 +35,18 @@ export class Projects {
       'Consulta de facturas y reportes',
     ],
   };
+
+  protected loadError = '';
+
+  async ngOnInit(): Promise<void> {
+    try {
+      const projects = await this.firestoreService.getCollection<Project>('projects');
+      if (projects.length > 0) {
+        this.project = projects[0];
+      }
+    } catch (error) {
+      console.error('No se pudieron cargar los proyectos de Firestore.', error);
+      this.loadError = 'No fue posible cargar los proyectos guardados en Firestore.';
+    }
+  }
 }

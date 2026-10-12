@@ -1,4 +1,8 @@
 <section id="proyectos" class="projects-section">
+	@if (loadError) {
+		<p role="alert">{{ loadError }} Se muestra el proyecto de respaldo.</p>
+	}
+
 	<div class="section-heading">
 		<p class="eyebrow">Proyecto destacado</p>
 		<h2>Una aplicación construida para resolver una necesidad concreta.</h2>
